@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Stopwatch from './components/Stopwatch.vue';
 </script>
 
 <template>
-  <Stopwatch/>
+  <h1>Stopwatch</h1>
 </template>
 
 <style scoped>
