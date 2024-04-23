@@ -11,9 +11,10 @@ const startDate = ref<Date | null>(null);
 const endDate = ref<Date | null>(null);
 
 const instance = getCurrentInstance();
-setInterval(() => instance.proxy.$forceUpdate(), 1000);
+setInterval(() => instance?.proxy?.$forceUpdate(), 1000);
 
-function handleStart(event) {
+function handleStart(event: MouseEvent) {
+    console.log(event);
     event.preventDefault();
     // Coerce type
     if (typeof inputHours.value != 'number') {
@@ -51,7 +52,7 @@ function handleReset() {
     inputSeconds.value = 0;
 }
 
-function clamp(val, min, max) {
+function clamp(val: number, min: number, max: number) {
     return Math.min(Math.max(val, min), max);
 }
 </script>
