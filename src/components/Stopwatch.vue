@@ -13,7 +13,7 @@ const endDate = ref<Date | null>(null);
 const instance = getCurrentInstance();
 setInterval(() => instance?.proxy?.$forceUpdate(), 1000);
 
-function handleStart(event: MouseEvent) {
+function onStart(event: MouseEvent) {
     console.log(event);
     event.preventDefault();
     // Coerce type
@@ -37,12 +37,12 @@ function handleStart(event: MouseEvent) {
     isRunning.value = true;
 }
 
-function handleStop() {
+function onStop() {
     isRunning.value = false;
     // TODO: set end date
 }
 
-function handleReset() {
+function onReset() {
     const confirmedReset = confirm("Are you sure you want to reset the stopwatch?");
     if (!confirmedReset) {
         return;
@@ -66,9 +66,9 @@ function clamp(val: number, min: number, max: number) {
         <input v-model="inputSeconds" type="number" name="seconds">
     </div>
     
-    <button @click="handleStart" form="timeInput" type="submit">Start</button>
-    <button @click="handleStop">Stop</button>
-    <button @click="handleReset">Reset</button>
+    <button @click="onStart" form="timeInput" type="submit">Start</button>
+    <button @click="onStop">Stop</button>
+    <button @click="onReset">Reset</button>
 </template>
 
 <style scoped>
